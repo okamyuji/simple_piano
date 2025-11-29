@@ -1,0 +1,54 @@
+appId: com.example.simplePiano
+---
+# 完全なユーザーフローテスト（統合テスト）
+
+# アプリ起動
+- launchApp
+- waitForAnimationToEnd
+- assertVisible: "シンプルピアノ"
+
+# Flow 1: 自由演奏
+- swipe:
+    start: 50%, 80%
+    end: 50%, 20%
+- swipe:
+    start: 50%, 80%
+    end: 50%, 20%
+- tapOn: "自由演奏"
+- waitForAnimationToEnd
+- assertVisible: ".*オクターブ.*"
+- tapOn:
+    point: "20%,85%"
+- tapOn:
+    point: "5%,7%"
+
+# ホームに戻る
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+
+# Flow 2: レッスン
+- tapOn: "レッスン"
+- waitForAnimationToEnd
+- tapOn:
+    point: "5%,7%"
+
+# Flow 3: 進捗
+- scroll
+- tapOn: "進捗"
+- waitForAnimationToEnd
+- tapOn:
+    point: "5%,7%"
+
+# Flow 4: 設定
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+- scroll
+- tapOn: "設定"
+- waitForAnimationToEnd
+- tapOn:
+    point: "5%,7%"
+
+# 最終確認
+- assertVisible: "シンプルピアノ"

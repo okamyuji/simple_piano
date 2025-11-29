@@ -1,0 +1,20 @@
+appId: com.example.simplePiano
+---
+# 進捗画面の全機能テスト
+
+- launchApp
+- scroll
+- tapOn: "進捗"
+- waitForAnimationToEnd
+- assertVisible: "進捗"
+
+# 進捗チャートの表示確認
+- assertVisible: ".*あなたの進捗.*"
+- assertVisible: ".*レッスン完了.*"
+- assertVisible: ".*総練習時間.*"
+- assertVisible: ".*連続練習.*"
+
+# ホームに戻る
+- tapOn:
+    point: "5%,7%"
+- assertVisible: "シンプルピアノ"

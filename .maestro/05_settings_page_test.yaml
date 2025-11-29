@@ -1,0 +1,23 @@
+appId: com.example.simplePiano
+---
+# 設定画面の全機能テスト
+
+- launchApp
+- tapOn:
+    point: "95%,7%"
+- waitForAnimationToEnd
+- assertVisible: "設定"
+
+# オーディオ設定セクションの表示確認
+- assertVisible: ".*オーディオ.*"
+
+# スクロールして各セクションを確認
+- scroll
+- assertVisible: "メトロノーム"
+- scroll
+- assertVisible: ".*アプリ.*"
+
+# ホームに戻る
+- tapOn:
+    point: "5%,7%"
+- assertVisible: "シンプルピアノ"

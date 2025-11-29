@@ -1,0 +1,76 @@
+appId: com.example.simplePiano
+---
+# ホーム画面の全機能テスト
+
+- launchApp
+- assertVisible: "シンプルピアノ"
+
+# データの読み込み待機
+- waitForAnimationToEnd
+
+# 励ましメッセージセクションの表示確認
+- assertVisible: ".*素晴らしい.*"
+
+# 自由演奏ボタンのタップテスト
+- swipe:
+    start: 50%, 80%
+    end: 50%, 20%
+- swipe:
+    start: 50%, 80%
+    end: 50%, 20%
+- tapOn: "自由演奏"
+- waitForAnimationToEnd
+- assertVisible: ".*オクターブ.*"
+- tapOn:
+    point: "5%,7%"
+
+# ホーム画面に戻ったので最上部にスクロール
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+
+# レッスンボタンのタップテスト
+- tapOn: "レッスン"
+- waitForAnimationToEnd
+- assertVisible: ".*レベル.*1.*"
+- tapOn:
+    point: "5%,7%"
+
+# ホーム画面に戻ったので最上部にスクロール
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+
+# 進捗ボタンのタップテスト
+- scroll
+- tapOn: "進捗"
+- waitForAnimationToEnd
+- assertVisible: ".*あなたの進捗.*"
+- tapOn:
+    point: "5%,7%"
+
+# ホーム画面に戻ったので最上部にスクロール
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+
+# 設定ボタンのタップテスト（右上のアイコン）
+- swipe:
+    start: 50%, 30%
+    end: 50%, 70%
+- tapOn:
+    point: "95%,7%"
+- waitForAnimationToEnd
+- assertVisible: "設定"
+- assertVisible: ".*オーディオ.*"
+- tapOn:
+    point: "5%,7%"
+
+# テスト完了
+- assertVisible: "シンプルピアノ"

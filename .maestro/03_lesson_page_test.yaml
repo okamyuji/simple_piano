@@ -1,0 +1,35 @@
+appId: com.example.simplePiano
+---
+# レッスン画面の全機能テスト
+
+- launchApp
+- tapOn: "レッスン"
+- waitForAnimationToEnd
+- waitForAnimationToEnd
+
+# タブの切り替えテスト
+- tapOn:
+    point: "34%,15%"
+- waitForAnimationToEnd
+- tapOn:
+    point: "18%,15%"
+- waitForAnimationToEnd
+
+# レッスンカードをタップ
+- scroll
+- tapOn:
+    point: "50%,45%"
+- waitForAnimationToEnd
+- waitForAnimationToEnd
+- waitForAnimationToEnd
+
+# 戻る（レッスン練習画面から）
+- tapOn:
+    point: "5%,7%"
+- waitForAnimationToEnd
+- waitForAnimationToEnd
+
+# 戻る（レッスン一覧からホームへ）
+- tapOn:
+    point: "5%,7%"
+- waitForAnimationToEnd

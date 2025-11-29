@@ -1,0 +1,50 @@
+appId: com.example.simplePiano
+---
+# ピアノ演奏画面の全機能テスト
+
+- launchApp
+- tapOn: "自由演奏"
+- assertVisible: ".*演奏.*"
+
+# 初期化の待機
+- waitForAnimationToEnd
+
+# コントロールパネルの表示確認
+- assertVisible: ".*オクターブ.*"
+
+# オクターブコントロールのテスト（減少ボタンをタップ）
+- tapOn:
+    point: "33%,26%"
+
+# オクターブコントロールのテスト（増加ボタンをタップ）
+- tapOn:
+    point: "67%,26%"
+- tapOn:
+    point: "67%,26%"
+
+# 録音ボタンのテスト（AppBar右上）
+- tapOn:
+    point: "95%,7%"
+- waitForAnimationToEnd
+- assertVisible: ".*録音.*"
+
+# ピアノ鍵盤の操作テスト（複数の鍵をタップ）
+- tapOn:
+    point: "10%,85%"
+- tapOn:
+    point: "20%,85%"
+- tapOn:
+    point: "30%,85%"
+- tapOn:
+    point: "40%,85%"
+
+# 録音停止テスト（AppBar右上）
+- tapOn:
+    point: "95%,7%"
+- assertVisible: "録音を保存"
+- tapOn: "保存"
+
+# ホームに戻る
+- tapOn:
+    point: "5%,7%"
+- assertVisible: "シンプルピアノ"
