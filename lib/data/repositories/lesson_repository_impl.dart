@@ -23,7 +23,7 @@ class LessonRepositoryImpl implements LessonRepository {
       final lessons = lessonDataService.getAllLessons();
       final completedLessonIdsResult = await _getCompletedLessonIds();
 
-      return completedLessonIdsResult.fold((failure) => Left(failure), (
+      return await completedLessonIdsResult.fold((failure) => Left(failure), (
         completedLessonIds,
       ) {
         debugPrint('[LessonRepository] 完了済みレッスンID: $completedLessonIds');
@@ -52,7 +52,7 @@ class LessonRepositoryImpl implements LessonRepository {
   Future<Either<Failure, List<Lesson>>> getLessonsByLevel(int level) async {
     try {
       final allLessonsResult = await getAllLessons();
-      return allLessonsResult.fold((failure) => Left(failure), (lessons) {
+      return await allLessonsResult.fold((failure) => Left(failure), (lessons) {
         final filteredLessons = lessons
             .where((lesson) => lesson.level == level)
             .toList();
@@ -67,7 +67,7 @@ class LessonRepositoryImpl implements LessonRepository {
   Future<Either<Failure, Lesson>> getLessonById(String id) async {
     try {
       final allLessonsResult = await getAllLessons();
-      return allLessonsResult.fold((failure) => Left(failure), (lessons) {
+      return await allLessonsResult.fold((failure) => Left(failure), (lessons) {
         try {
           final lesson = lessons.firstWhere((l) => l.id == id);
           return Right(lesson);
@@ -85,7 +85,7 @@ class LessonRepositoryImpl implements LessonRepository {
     try {
       // UserProgressを取得
       final progressResult = await progressRepository.getUserProgress();
-      return progressResult.fold(
+      return await progressResult.fold(
         (failure) {
           debugPrint('[LessonRepository] UserProgress取得失敗: ${failure.message}');
           return Left(failure);
@@ -140,7 +140,7 @@ class LessonRepositoryImpl implements LessonRepository {
     try {
       // 目標達成率を超えたら完了とマーク
       final lessonResult = await getLessonById(lessonId);
-      return lessonResult.fold(
+      return await lessonResult.fold(
         (failure) {
           debugPrint('[LessonRepository] レッスン取得失敗: ${failure.message}');
           return Left(failure);
@@ -168,7 +168,7 @@ class LessonRepositoryImpl implements LessonRepository {
   Future<Either<Failure, Lesson?>> getNextLesson(String currentLessonId) async {
     try {
       final allLessonsResult = await getAllLessons();
-      return allLessonsResult.fold((failure) => Left(failure), (lessons) {
+      return await allLessonsResult.fold((failure) => Left(failure), (lessons) {
         try {
           final currentLesson = lessons.firstWhere(
             (l) => l.id == currentLessonId,

@@ -1,5 +1,5 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -48,27 +48,18 @@ extension GetItInjectableX on _i174.GetIt {
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final injectionModule = _$InjectionModule();
+    gh.lazySingleton<_i1000.AudioEngine>(() => _i1000.AudioEngine());
+    gh.lazySingleton<_i759.DatabaseHelper>(() => _i759.DatabaseHelper());
+    gh.lazySingleton<_i221.LessonDataService>(() => _i221.LessonDataService());
     await gh.lazySingletonAsync<_i460.SharedPreferences>(
       () => injectionModule.sharedPreferences,
       preResolve: true,
     );
-    gh.lazySingleton<_i759.DatabaseHelper>(() => _i759.DatabaseHelper());
-    gh.lazySingleton<_i1000.AudioEngine>(() => _i1000.AudioEngine());
-    gh.lazySingleton<_i221.LessonDataService>(() => _i221.LessonDataService());
     gh.lazySingleton<_i772.LocalStorageDataSource>(
       () => _i772.LocalStorageDataSource(gh<_i460.SharedPreferences>()),
     );
-    gh.lazySingleton<_i463.RecordingRepository>(
-      () => _i429.RecordingRepositoryImpl(gh<_i759.DatabaseHelper>()),
-    );
     gh.lazySingleton<_i94.AudioRepository>(
       () => _i774.AudioRepositoryImpl(gh<_i1000.AudioEngine>()),
-    );
-    gh.factory<_i888.StartRecording>(
-      () => _i888.StartRecording(gh<_i463.RecordingRepository>()),
-    );
-    gh.factory<_i121.StopRecording>(
-      () => _i121.StopRecording(gh<_i463.RecordingRepository>()),
     );
     gh.lazySingleton<_i75.ProgressRepository>(
       () => _i377.ProgressRepositoryImpl(
@@ -76,11 +67,8 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i759.DatabaseHelper>(),
       ),
     );
-    gh.factory<_i106.StopNote>(
-      () => _i106.StopNote(gh<_i94.AudioRepository>()),
-    );
-    gh.factory<_i981.PlayNote>(
-      () => _i981.PlayNote(gh<_i94.AudioRepository>()),
+    gh.lazySingleton<_i463.RecordingRepository>(
+      () => _i429.RecordingRepositoryImpl(gh<_i759.DatabaseHelper>()),
     );
     gh.lazySingleton<_i262.LessonRepository>(
       () => _i770.LessonRepositoryImpl(
@@ -88,12 +76,17 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i75.ProgressRepository>(),
       ),
     );
-    gh.factory<_i951.PianoBloc>(
-      () => _i951.PianoBloc(
-        playNoteUseCase: gh<_i981.PlayNote>(),
-        stopNoteUseCase: gh<_i106.StopNote>(),
-        audioRepository: gh<_i94.AudioRepository>(),
-      ),
+    gh.factory<_i888.StartRecording>(
+      () => _i888.StartRecording(gh<_i463.RecordingRepository>()),
+    );
+    gh.factory<_i121.StopRecording>(
+      () => _i121.StopRecording(gh<_i463.RecordingRepository>()),
+    );
+    gh.factory<_i981.PlayNote>(
+      () => _i981.PlayNote(gh<_i94.AudioRepository>()),
+    );
+    gh.factory<_i106.StopNote>(
+      () => _i106.StopNote(gh<_i94.AudioRepository>()),
     );
     gh.factory<_i142.GetLessons>(
       () => _i142.GetLessons(gh<_i262.LessonRepository>()),
@@ -105,23 +98,17 @@ extension GetItInjectableX on _i174.GetIt {
         recordingRepository: gh<_i463.RecordingRepository>(),
       ),
     );
-    gh.factory<_i376.RecordSession>(
-      () => _i376.RecordSession(gh<_i75.ProgressRepository>()),
-    );
     gh.factory<_i537.GetDailyChallenge>(
       () => _i537.GetDailyChallenge(gh<_i75.ProgressRepository>()),
     );
     gh.factory<_i731.GetUserProgress>(
       () => _i731.GetUserProgress(gh<_i75.ProgressRepository>()),
     );
+    gh.factory<_i376.RecordSession>(
+      () => _i376.RecordSession(gh<_i75.ProgressRepository>()),
+    );
     gh.factory<_i50.SaveProgress>(
       () => _i50.SaveProgress(gh<_i75.ProgressRepository>()),
-    );
-    gh.factory<_i613.LessonBloc>(
-      () => _i613.LessonBloc(
-        getLessonsUseCase: gh<_i142.GetLessons>(),
-        lessonRepository: gh<_i262.LessonRepository>(),
-      ),
     );
     gh.factory<_i243.ProgressBloc>(
       () => _i243.ProgressBloc(
@@ -130,6 +117,19 @@ extension GetItInjectableX on _i174.GetIt {
         recordSessionUseCase: gh<_i376.RecordSession>(),
         getDailyChallengeUseCase: gh<_i537.GetDailyChallenge>(),
         progressRepository: gh<_i75.ProgressRepository>(),
+      ),
+    );
+    gh.factory<_i613.LessonBloc>(
+      () => _i613.LessonBloc(
+        getLessonsUseCase: gh<_i142.GetLessons>(),
+        lessonRepository: gh<_i262.LessonRepository>(),
+      ),
+    );
+    gh.factory<_i951.PianoBloc>(
+      () => _i951.PianoBloc(
+        playNoteUseCase: gh<_i981.PlayNote>(),
+        stopNoteUseCase: gh<_i106.StopNote>(),
+        audioRepository: gh<_i94.AudioRepository>(),
       ),
     );
     return this;
