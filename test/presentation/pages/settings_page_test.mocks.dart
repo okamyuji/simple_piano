@@ -261,6 +261,11 @@ class MockPianoBloc extends _i1.Mock implements _i10.PianoBloc {
           as _i5.AudioRepository);
 
   @override
+  bool get isClosed =>
+      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
+          as bool);
+
+  @override
   _i6.PianoState get state =>
       (super.noSuchMethod(
             Invocation.getter(#state),
@@ -275,11 +280,6 @@ class MockPianoBloc extends _i1.Mock implements _i10.PianoBloc {
             returnValue: _i8.Stream<_i6.PianoState>.empty(),
           )
           as _i8.Stream<_i6.PianoState>);
-
-  @override
-  bool get isClosed =>
-      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
-          as bool);
 
   @override
   void add(_i11.PianoEvent? event) => super.noSuchMethod(
@@ -313,6 +313,16 @@ class MockPianoBloc extends _i1.Mock implements _i10.PianoBloc {
     _i12.Transition<_i11.PianoEvent, _i6.PianoState>? transition,
   ) => super.noSuchMethod(
     Invocation.method(#onTransition, [transition]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  void onDone(
+    _i11.PianoEvent? event, [
+    Object? error,
+    StackTrace? stackTrace,
+  ]) => super.noSuchMethod(
+    Invocation.method(#onDone, [event, error, stackTrace]),
     returnValueForMissingStub: null,
   );
 
