@@ -7,11 +7,11 @@
 #include "generated_plugin_registrant.h"
 
 #include <audioplayers_windows/audioplayers_windows_plugin.h>
-#include <universal_ble/universal_ble_plugin_c_api.h>
+#include <flutter_midi_command_windows/flutter_midi_command_windows_plugin.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
   AudioplayersWindowsPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("AudioplayersWindowsPlugin"));
-  UniversalBlePluginCApiRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("UniversalBlePluginCApi"));
+  FlutterMidiCommandWindowsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FlutterMidiCommandWindowsPlugin"));
 }
