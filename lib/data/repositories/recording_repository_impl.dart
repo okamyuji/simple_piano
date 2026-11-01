@@ -157,7 +157,9 @@ class RecordingRepositoryImpl implements RecordingRepository {
   Future<Either<Failure, Recording>> getRecordingById(String id) async {
     try {
       final allRecordingsResult = await getAllRecordings();
-      return allRecordingsResult.fold((failure) => Left(failure), (recordings) {
+      return await allRecordingsResult.fold((failure) => Left(failure), (
+        recordings,
+      ) {
         try {
           final recording = recordings.firstWhere((r) => r.id == id);
           return Right(recording);
