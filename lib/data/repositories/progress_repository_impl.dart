@@ -252,7 +252,9 @@ class ProgressRepositoryImpl implements ProgressRepository {
   Future<Either<Failure, void>> updateStreak() async {
     try {
       final progressResult = await getUserProgress();
-      return progressResult.fold((failure) => Left(failure), (progress) async {
+      return await progressResult.fold((failure) => Left(failure), (
+        progress,
+      ) async {
         final now = DateTime.now();
         final today = DateTime(now.year, now.month, now.day);
 
@@ -299,7 +301,9 @@ class ProgressRepositoryImpl implements ProgressRepository {
   Future<Either<Failure, void>> addMilestone(String milestone) async {
     try {
       final progressResult = await getUserProgress();
-      return progressResult.fold((failure) => Left(failure), (progress) async {
+      return await progressResult.fold((failure) => Left(failure), (
+        progress,
+      ) async {
         if (!progress.achievedMilestones.contains(milestone)) {
           final updatedMilestones = [...progress.achievedMilestones, milestone];
           final updatedProgress = progress.copyWith(
@@ -319,7 +323,9 @@ class ProgressRepositoryImpl implements ProgressRepository {
   Future<Either<Failure, Map<String, dynamic>>> getStatistics() async {
     try {
       final progressResult = await getUserProgress();
-      return progressResult.fold((failure) => Left(failure), (progress) async {
+      return await progressResult.fold((failure) => Left(failure), (
+        progress,
+      ) async {
         final sessionsResult = await getPracticeSessions();
         return sessionsResult.fold((failure) => Left(failure), (sessions) {
           final stats = <String, dynamic>{
