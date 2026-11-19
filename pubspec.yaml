@@ -76,7 +76,7 @@ dev_dependencies:
   
   # コード生成
   build_runner: ^2.16.1
-  freezed: ^4.0.3
+  freezed: ^4.0.1
   json_serializable: ^6.11.4
   injectable_generator: ^3.1.3
 
