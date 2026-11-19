@@ -58,6 +58,7 @@ dependencies:
   dartz: ^0.10.1
 
   path: 1.9.1
+  material_ui: ^1.11.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
